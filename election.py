@@ -3,11 +3,12 @@ import json
 
 class Election:
     """Represents an election's current state"""
-    def __init__(self, candidates: list[str], multiple: bool = False):
+    def __init__(self, candidates: list[str], json_filename: str, multiple: bool = False):
         """Creates a new Election object with specified candidates (multiple votes disallowed by default)"""
         self.__candidates = candidates
         self.__votes = {candidate: 0 for candidate in candidates}
         self.__votes["empty"] = 0
+        self.__json_filename = json_filename
         self.__multiple = multiple
 
     def __vote(self, candidate: str):
@@ -26,9 +27,9 @@ class Election:
         """Represents the current election state as a string"""
         return str(self.__votes)
 
-    def write_json(self, filename: str):
+    def write_json(self):
         """Write current vote tally to JSON file"""
-        with open(filename, "w") as f:
+        with open(self.__json_filename, "w") as f:
             json.dump(self.__votes, f)
 
     def vote(self, candidates: list[str]):

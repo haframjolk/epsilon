@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from flask import Flask, render_template, request
 from election import Election
 import json
@@ -9,13 +10,14 @@ def init():
     """Initializes required data"""
     global config
     global election
+    config_filename = os.environ.get("EPSILON_CONFIG")
 
     # Read config from file
-    with open("config.json") as f:
+    with open(config_filename) as f:
         config = json.load(f)
 
     # Create Election object from config
-    election = Election(config["candidates"], config["multiple"])
+    election = Election(config["candidates"], config["multiple"], config["out_filename"])
 
 
 # Initialize data
@@ -55,7 +57,7 @@ def vote():
     if success:
         # If voting was successful, disable the password and write the new results
         remove_password(password)
-        election.write_json("votes.json")
+        election.write_json()
         return render_template("success.html")
     else:
         return render_template("error.html")
