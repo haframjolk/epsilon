@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 from flask import Flask, render_template, request
+from election import Election
 import json
 
 
 def init():
     """Initializes required data"""
     global config
-    global votes
+    global election
 
     config = {}
     with open("config.json") as f:
         config = json.load(f)
 
-    votes = {candidate: 0 for candidate in config["candidates"]}
-    votes["empty"] = 0
+    election = Election(config["candidates"], config["multiple"])
 
 
 # Initialize data
@@ -22,42 +22,8 @@ init()
 app = Flask(__name__)
 
 
-def write_json():
-    """Writes current vote tally to JSON file"""
-    with open("votes.json", "w") as f:
-        json.dump(votes, f)
-
-
-def vote_for(candidate: str):
-    """Vote for a single candidate"""
-    votes[candidate] += 1
-
-
-def candidate_exists(candidate: str):
-    """Returns True if candidate exists, False otherwise"""
-    return candidate in votes
-
-
-def vote_for_candidates(candidates: list[str]):
-    """Vote for multiple candidates. Returns True if successful, False otherwise"""
-    # If candidates are not selected, register empty vote
-    if not candidates:
-        empty_vote()
-        return True
-    # If all candidates exist, vote for every one
-    if all(candidate_exists(candidate) for candidate in candidates):
-        for candidate in candidates:
-            vote_for(candidate)
-        return True
-    return False
-
-
 def remove_password(password: str):
     config["passwords"].remove(password)
-
-
-def empty_vote():
-    votes["empty"] += 1
 
 
 @app.route("/")
@@ -78,11 +44,11 @@ def vote():
         if config["multiple"]:
             candidates = data.getlist("candidate")
         # Try to vote for the candidates
-        success = vote_for_candidates(candidates)
+        success = election.vote(candidates)
     if success:
         # If voting was successful, disable the password and write the new results
         remove_password(password)
-        write_json()
+        election.write_json("votes.json")
         return render_template("success.html")
     else:
         return render_template("error.html")
