@@ -42,7 +42,7 @@ flask run
 
 ```sh
 poetry shell
-python sreve.py
+python serve.py
 ```
 
 Votes are written to the results file immediately as they come in. To end the election, simply stop serving Epsilon by pressing <kbd>CTRL</kbd>+<kbd>C</kbd>.
