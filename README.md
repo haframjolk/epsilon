@@ -28,6 +28,7 @@ Elections are configured using a JSON file placed in the repository root called 
 }
 ```
 
+
 ## Running
 
 ### Development
@@ -43,3 +44,5 @@ flask run
 poetry shell
 python seve.py
 ```
+
+Votes are written to the results file immediately as they come in. To end the election, simply stop serving Epsilon with <kbd>CTRL</kbd>+<kbd>C</kbd>.
