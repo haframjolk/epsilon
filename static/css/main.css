@@ -14,23 +14,22 @@ body {
 .container {
     max-width: 60em;
     margin: 0 auto;
-}
-
-main,
-.main-header,
-.main-footer {
     padding: 1em;
 }
 
 .main-header,
-.main-footer,
-.ballot-title {
+.main-footer {
     text-align: center;
 }
 
 .ballot {
     max-width: 20em;
     margin: 0 auto;
+}
+
+.ballot-title {
+    text-align: center;
+    margin-top: 0;
 }
 
 .ballot fieldset {
