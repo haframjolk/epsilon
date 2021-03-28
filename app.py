@@ -31,8 +31,8 @@ def remove_password(password: str):
 
 
 @app.route("/")
-def index():
-    return render_template("index.html", candidates=config["candidates"], multiple=config["multiple"])
+def ballot():
+    return render_template("ballot.html", title=config["title"], candidates=config["candidates"], multiple=config["multiple"])
 
 
 @app.route("/vote", methods=["POST"])
