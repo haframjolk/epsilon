@@ -1,6 +1,6 @@
 # Epsilon
 
-Epsilon is a simple anonymous online voting system.
+Epsilon is a simple anonymous online voting system with single-use password authentication.
 
 ## Prerequisites
 
