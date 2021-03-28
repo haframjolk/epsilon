@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "alpha-vote"
+name = "epsilon"
 version = "0.1.0"
 description = "Simple online voting system"
 authors = ["Reyn Alpha <reynalpha@outlook.com>"]
