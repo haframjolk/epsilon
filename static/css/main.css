@@ -5,3 +5,89 @@ html {
 *, *::before, *::after {
     box-sizing: inherit;
 }
+
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.container {
+    max-width: 60em;
+    margin: 0 auto;
+}
+
+main,
+.main-header,
+.main-footer {
+    padding: 1em;
+}
+
+.main-header,
+.main-footer,
+.ballot-title {
+    text-align: center;
+}
+
+.ballot {
+    max-width: 20em;
+    margin: 0 auto;
+}
+
+.ballot fieldset {
+    margin-bottom: 1em;
+    border-radius: 0.5em;
+    padding: 1em;
+    border: 2px solid #9f9f9f;
+}
+
+.ballot__candidate {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.ballot__candidate:last-of-type {
+    margin-bottom: 0.25em;
+}
+
+.label--block {
+    display: block;
+    margin-bottom: 0.5em;
+}    
+
+.label--required::after {
+    content: " *";
+    color: red;
+}
+
+.input--text {
+    font-size: 1em;
+    padding: 0.25em;
+    width: 100%;
+    border: 1px solid #9f9f9f;
+}
+
+.button {
+    font-size: 1em;
+    padding: 0.5em;
+    border-radius: 0.5em;
+    background-color: #efefef;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.button:hover {
+    background-color: #bfbfbf;
+}
+
+.button:active {
+    background-color: #9f9f9f;
+}
+
+.button--submit {
+    display: block;
+    margin: 0 auto;
+}
+
+.message {
+    text-align: center;
+}

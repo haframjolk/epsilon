@@ -2,22 +2,25 @@
 {% block title %}{{ title }}{% endblock %}
 {% block header %}Election: {{ title }}{% endblock %}
 {% block content %}
-<h2>Ballot</h2>
-<form method="POST" action="/vote">
-    <fieldset>
-        <legend>Candidates</legend>
-        {% for candidate in candidates %}
-            <input id="candidate-{{candidate}}" type="{{ 'checkbox' if multiple else 'radio' }}" name="candidate" value="{{ candidate }}">
-            <label for="candidate-{{candidate}}">{{ candidate }}</label>
-            <br>
-        {% endfor %}
-    </fieldset>
-    <fieldset>
-        <legend>Authentication</legend>
-        <label for="password" class="required">Password</label>
-        <br>
-        <input type="text" name="password" id="password" required>
-    </fieldset>
-    <button type="submit">Vote</button>
-</form>
+<section class="ballot">
+    <h2 class="ballot-title">Ballot</h2>
+
+    <form class="ballot" method="POST" action="/vote">
+        <fieldset class="ballot__candidates">
+            <legend>Candidates</legend>
+            {% for candidate in candidates %}
+                <div class="ballot__candidate">
+                    <input id="candidate-{{candidate}}" type="{{ 'checkbox' if multiple else 'radio' }}" name="candidate" value="{{ candidate }}">
+                    <label for="candidate-{{candidate}}">{{ candidate }}</label>
+                </div>
+            {% endfor %}
+        </fieldset>
+        <fieldset class="ballot__authentication">
+            <legend>Authentication</legend>
+            <label class="label label--block label--required" for="password">Password</label>
+            <input class="input input--text" type="text" name="password" id="password" required>
+        </fieldset>
+        <button class="button button--submit" type="submit">Vote</button>
+    </form>
+</section>
 {% endblock %}

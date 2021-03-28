@@ -10,20 +10,26 @@
     {% endblock %}
 </head>
 <body>
-    <header>
-        <h1>
-            {% block header %}
-            {% endblock %}
-        </h1>
+    <header class="main-header">
+        <div class="container">
+            <h1>
+                {% block header %}
+                {% endblock %}
+            </h1>
+        </div>
     </header>
     <main>
-        {% block content %}
-        {% endblock %}
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
-    <footer>
-        {% block footer %}
-        <small><a href="https://github.com/haframjolk/epsilon">Epsilon by Reyn Alpha</a></small>
-        {% endblock %}
+    <footer class="main-footer">
+        <div class="container">
+            {% block footer %}
+            <small><a href="https://github.com/haframjolk/epsilon">Epsilon by Reyn Alpha</a></small>
+            {% endblock %}
+        </div>
     </footer>
 </body>
 </html>
