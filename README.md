@@ -18,7 +18,7 @@ poetry install
 
 Elections are configured using a JSON file placed in the repository root called `config.json`. The file must follow the following format and all options must be specified:
 
-```json
+```js
 {
     "title": "Election Title", // The title of the election
     "passwords": ["123", "321"], // List of allowed, one-time passwords
