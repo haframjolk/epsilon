@@ -4,13 +4,11 @@ import json
 
 app = Flask(__name__)
 
-config = {
-    "passwords": ["123", "321", "132"]
-}
+config = {}
+with open("config.json") as f:
+    config = json.load(f)
 
-candidates = ["Sóla", "Vallý"]
-
-votes = {candidate: 0 for candidate in candidates}
+votes = {candidate: 0 for candidate in config["candidates"]}
 votes["empty"] = 0
 
 
@@ -36,7 +34,7 @@ def empty_vote():
 
 @app.route("/")
 def index():
-    return render_template("index.html", candidates=candidates)
+    return render_template("index.html", candidates=config["candidates"])
 
 
 @app.route("/vote", methods=["POST"])
@@ -48,8 +46,8 @@ def vote():
     if password in config["passwords"]:
         candidate = data.get("candidate")
 
-        # If no candidate is selected, register an empty vote
-        if not candidate:
+        # If no candidate was selected, register an empty vote
+        if candidate is None:
             empty_vote()
             success = True
         # Else, try to vote for candidate
