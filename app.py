@@ -10,10 +10,9 @@ def init():
     """Initializes required data"""
     global config
     global election
-    config_filename = os.environ.get("EPSILON_CONFIG")
 
     # Read config from file
-    with open(config_filename) as f:
+    with open("config.json") as f:
         config = json.load(f)
 
     # Create Election object from config
