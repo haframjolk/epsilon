@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Ballot{% endblock %}
+{% block header %}Ballot{% endblock %}
+{% block content %}
+<form method="POST" action="/vote">
+    <fieldset>
+        <legend>Candidates</legend>
+        {% for candidate in candidates %}
+            <input id="candidate-{{candidate}}" type="radio" name="candidate" value="{{ candidate }}">
+            <label for="candidate-{{candidate}}">{{ candidate }}</label>
+            <br>
+        {% endfor %}
+    </fieldset>
+    <fieldset>
+        <legend>Authentication</legend>
+        <label for="password" class="required">Password</label>
+        <br>
+        <input type="text" name="password" id="password" required>
+    </fieldset>
+    <button type="submit">Vote</button>
+</form>
+{% endblock %}

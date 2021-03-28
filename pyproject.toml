@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "alpha-vote"
+version = "0.1.0"
+description = "Simple online voting system"
+authors = ["Reyn Alpha <reynalpha@outlook.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^1.1.2"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^3.9.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
