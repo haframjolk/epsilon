@@ -69,16 +69,18 @@ def index():
 def vote():
     data = request.form
     password = data.get("password")
+    # Was the vote successful?
     success = False
     # Check password validity
     if password in config["passwords"]:
         candidates = [data.get("candidate")]
-        # Get list only if multiple is selected, to prevent multiple votes
+        # Only get the form list if the election allows multiple choice, to prevent voters from voting multiple times
         if config["multiple"]:
             candidates = data.getlist("candidate")
-        # Try to vote for candidates
+        # Try to vote for the candidates
         success = vote_for_candidates(candidates)
     if success:
+        # If voting was successful, disable the password and write the new results
         remove_password(password)
         write_json()
         return render_template("success.html")
