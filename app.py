@@ -22,6 +22,10 @@ init()
 app = Flask(__name__)
 
 
+def password_is_valid(password: str):
+    return password in config["passwords"]
+
+
 def remove_password(password: str):
     config["passwords"].remove(password)
 
@@ -35,16 +39,15 @@ def index():
 def vote():
     data = request.form
     password = data.get("password")
+
     # Was the vote successful?
     success = False
     # Check password validity
-    if password in config["passwords"]:
-        candidates = [data.get("candidate")]
-        # Only get the form list if the election allows multiple choice, to prevent voters from voting multiple times
-        if config["multiple"]:
-            candidates = data.getlist("candidate")
-        # Try to vote for the candidates
+    if password_is_valid(password):
+        candidates = data.getlist("candidate")
+        # Try to vote for the selected candidates
         success = election.vote(candidates)
+
     if success:
         # If voting was successful, disable the password and write the new results
         remove_password(password)
