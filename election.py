@@ -8,10 +8,6 @@ class Election:
         self.__votes["empty"] = 0
         self.__multiple = multiple
 
-    def write_json(self, filename: str):
-        with open(filename, "w") as f:
-            json.dump(self.__votes, f)
-
     def __vote(self, candidate: str):
         self.__votes[candidate] += 1
 
@@ -20,6 +16,13 @@ class Election:
 
     def __candidate_exists(self, candidate: str):
         return candidate in self.__candidates
+
+    def __str__(self):
+        return str(self.__votes)
+
+    def write_json(self, filename: str):
+        with open(filename, "w") as f:
+            json.dump(self.__votes, f)
 
     def vote(self, candidates: list[str]):
         # Prevent multiple votes in single-vote elections
@@ -35,6 +38,3 @@ class Election:
                 self.__vote(candidate)
             return True
         return False
-
-    def __str__(self):
-        return str(self.__votes)
