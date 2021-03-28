@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import os
 from flask import Flask, render_template, request
 from election import Election
 import json
@@ -16,7 +15,7 @@ def init():
         config = json.load(f)
 
     # Create Election object from config
-    election = Election(config["candidates"], config["multiple"], config["out_filename"])
+    election = Election(config["candidates"], config["out_filename"], config["multiple"])
 
 
 # Initialize data
