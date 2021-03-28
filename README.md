@@ -4,7 +4,7 @@ Epsilon is a simple anonymous online voting system with single-use password auth
 
 ## Prerequisites
 
-Epsilon requires Python and [Poetry](https://python-poetry.org).
+Epsilon requires Python 3.9 or later and [Poetry](https://python-poetry.org).
 
 ## Setup
 
@@ -41,5 +41,5 @@ flask run
 
 ```sh
 poetry shell
-gunicorn --bind 0.0.0.0:8080 app:app
+python seve.py
 ```
