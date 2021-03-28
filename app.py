@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from flask import Flask, render_template, request
 from election import Election
 import json
@@ -9,10 +10,11 @@ def init():
     global config
     global election
 
-    config = {}
+    # Read config from file
     with open("config.json") as f:
         config = json.load(f)
 
+    # Create Election object from config
     election = Election(config["candidates"], config["multiple"])
 
 
@@ -23,10 +25,12 @@ app = Flask(__name__)
 
 
 def password_is_valid(password: str):
+    """Returns True if password is valid, False otherwise"""
     return password in config["passwords"]
 
 
 def remove_password(password: str):
+    """Removes password from the list of allowed passwords"""
     config["passwords"].remove(password)
 
 
