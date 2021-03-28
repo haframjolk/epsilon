@@ -8,7 +8,16 @@ html {
 
 body {
     margin: 0;
-    font-family: sans-serif;
+    font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
 }
 
 .container {
@@ -33,15 +42,19 @@ body {
 }
 
 .ballot fieldset {
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     border-radius: 0.5em;
-    padding: 1em;
+    padding: 1.5em;
     border: 2px solid #9f9f9f;
 }
 
 .ballot__candidate {
     display: block;
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
+}
+
+.ballot__candidate label {
+    margin-left: 0.25em;
 }
 
 .ballot__candidate:last-of-type {
@@ -60,9 +73,10 @@ body {
 
 .input--text {
     font-size: 1em;
-    padding: 0.25em;
+    padding: 0.5em;
     width: 100%;
     border: 1px solid #9f9f9f;
+    border-radius: 0.25em;
 }
 
 .button {
