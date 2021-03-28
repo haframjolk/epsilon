@@ -6,7 +6,7 @@
     <fieldset>
         <legend>Candidates</legend>
         {% for candidate in candidates %}
-            <input id="candidate-{{candidate}}" type="radio" name="candidate" value="{{ candidate }}">
+            <input id="candidate-{{candidate}}" type="{{ 'checkbox' if multiple else 'radio' }}" name="candidate" value="{{ candidate }}">
             <label for="candidate-{{candidate}}">{{ candidate }}</label>
             <br>
         {% endfor %}
