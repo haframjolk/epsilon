@@ -3,6 +3,7 @@
 from flask import Flask, render_template, request
 from election import Election
 import json
+import atexit
 
 
 def init():
@@ -53,9 +54,23 @@ def vote():
         success = election.vote(candidates)
 
     if success:
+        print("Vote received!")
         # If voting was successful, disable the password and write the new results
         remove_password(password)
-        election.write_json()
+        # election.write_json()
         return render_template("success.html")
     else:
+        print("Voting failed")
         return render_template("error.html")
+
+
+def on_exit():
+    """Exit handler"""
+    print("Exit requested.")
+    print("Saving votes...")
+    election.write_json()
+    print("Votes saved.")
+
+
+# Save election results on exit
+atexit.register(on_exit)

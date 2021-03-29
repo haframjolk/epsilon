@@ -45,4 +45,4 @@ poetry shell
 python serve.py
 ```
 
-Votes are written to the results file immediately as they come in. To end the election, simply stop serving Epsilon by pressing <kbd>CTRL</kbd>+<kbd>C</kbd>.
+Votes are written to the results file when the election ends. To end the election, simply stop the Epsilon process by pressing <kbd>CTRL</kbd>+<kbd>C</kbd>.
