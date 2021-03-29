@@ -54,22 +54,22 @@ def vote():
         success = election.vote(candidates)
 
     if success:
-        print("Vote received!")
+        print("Vote received")
         # If voting was successful, disable the password and write the new results
         remove_password(password)
         # election.write_json()
         return render_template("success.html")
     else:
-        print("Voting failed")
+        print("Voting attempt failed")
         return render_template("error.html")
 
 
 def on_exit():
     """Exit handler"""
-    print("Exit requested.")
+    print("Exit requested")
     print("Saving votes...")
     election.write_json()
-    print("Votes saved.")
+    print(f"Votes saved to {config['out_filename']}")
 
 
 # Save election results on exit
