@@ -3,13 +3,13 @@ import json
 
 class Election:
     """Represents an election's current state"""
-    def __init__(self, candidates: list[str], json_filename: str, multiple: bool = False):
-        """Creates a new Election object with specified candidates (multiple votes disallowed by default)"""
+    def __init__(self, candidates: list[str], json_filename: str, max_candidates: int = 1):
+        """Creates a new Election object with specified candidates (only allows voting for 1 candidate by default)"""
         self.__candidates = candidates
         self.__votes = {candidate: 0 for candidate in candidates}
         self.__votes["empty"] = 0
         self.__json_filename = json_filename
-        self.__multiple = multiple
+        self.__max_candidates = max_candidates
 
     def __vote(self, candidate: str):
         """Registers a vote for candidate"""
@@ -34,8 +34,8 @@ class Election:
 
     def vote(self, candidates: list[str]):
         """Vote for specified candidates"""
-        # Prevent multiple votes in single-vote elections
-        if not self.__multiple and len(candidates) > 1:
+        # Prevent voters from voting for more candidates than is allowed
+        if len(candidates) > self.__max_candidates:
             return False
 
         # If no candidates are selected, register an empty vote
@@ -51,3 +51,4 @@ class Election:
 
         # If voting fails
         return False
+

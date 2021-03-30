@@ -36,9 +36,13 @@ h6 {
     margin: 0 auto;
 }
 
-.ballot-title {
+.ballot__title {
     text-align: center;
     margin-top: 0;
+}
+
+.ballot__count {
+    text-align: center;
 }
 
 .ballot fieldset {
@@ -69,6 +73,11 @@ h6 {
 .label--required::after {
     content: " *";
     color: red;
+}
+
+input[disabled],
+input[disabled] + label {
+    cursor: not-allowed;
 }
 
 .input--text {

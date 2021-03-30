@@ -3,16 +3,17 @@
 {% block header %}Election: {{ title }}{% endblock %}
 {% block content %}
 <section class="ballot">
-    <h2 class="ballot-title">Ballot</h2>
+    <h2 class="ballot__title">Ballot</h2>
+    <p class="ballot__count">You can vote for up to {{ max_candidates }} {{ 'candidate' if max_candidates == 1 else 'candidates' }}.</p>
 
-    <form class="ballot" method="POST" action="/vote">
+    <form id="ballot" class="ballot" method="POST" action="/vote">
         <fieldset class="ballot__candidates">
             <legend>Candidates</legend>
             {% for candidate in candidates %}
-                <div class="ballot__candidate">
-                    <input id="candidate-{{candidate}}" type="{{ 'checkbox' if multiple else 'radio' }}" name="candidate" value="{{ candidate }}">
-                    <label for="candidate-{{candidate}}">{{ candidate }}</label>
-                </div>
+            <div class="ballot__candidate">
+                <input id="candidate-{{candidate}}" type="{{ 'checkbox' if max_candidates > 1 else 'radio' }}" name="candidate" value="{{ candidate }}">
+                <label for="candidate-{{candidate}}">{{ candidate }}</label>
+            </div>
             {% endfor %}
         </fieldset>
         <fieldset class="ballot__authentication">
@@ -23,4 +24,8 @@
         <button class="button button--submit" type="submit">Vote</button>
     </form>
 </section>
+<script>
+    window.EPSILON_CANDIDATE_LIMIT = {{ max_candidates }};
+</script>
+<script src="{{ url_for('static', filename='js/ballot.js') }}"></script>
 {% endblock %}

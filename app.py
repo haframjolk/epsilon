@@ -16,7 +16,7 @@ def init():
         config = json.load(f)
 
     # Create Election object from config
-    election = Election(config["candidates"], config["out_filename"], config["multiple"])
+    election = Election(config["candidates"], config["out_filename"], config["max_candidates"])
 
 
 # Initialize data
@@ -37,7 +37,7 @@ def remove_password(password: str):
 
 @app.route("/")
 def ballot():
-    return render_template("ballot.html", title=config["title"], candidates=config["candidates"], multiple=config["multiple"])
+    return render_template("ballot.html", title=config["title"], candidates=config["candidates"], max_candidates=config["max_candidates"])
 
 
 @app.route("/vote", methods=["POST"])
@@ -57,7 +57,6 @@ def vote():
         print("Vote received")
         # If voting was successful, disable the password and write the new results
         remove_password(password)
-        # election.write_json()
         return render_template("success.html")
     else:
         print("Voting attempt failed")
