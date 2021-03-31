@@ -15,6 +15,10 @@ def init():
     with open("config.json") as f:
         config = json.load(f)
 
+    # Set limit to number of candidates if no limit is set
+    if config["max_candidates"] == -1:
+        config["max_candidates"] = len(config["candidates"])
+
     # Create Election object from config
     election = Election(config["candidates"], config["out_filename"], config["max_candidates"])
 

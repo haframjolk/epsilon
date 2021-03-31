@@ -23,7 +23,7 @@ Elections are configured using a JSON file placed in the repository root called 
     "title": "Election Title", // The title of the election
     "passwords": ["123", "321"], // List of allowed, one-time passwords
     "candidates": ["Foo", "Bar"], // List of the candidates running
-    "max_candidates": 1, // Maximum number of candidates a voter can vote for
+    "max_candidates": 1, // Maximum number of candidates a voter can vote for (-1 for no limit)
     "out_filename": "results.json" // Filename to write election results to
 }
 ```
