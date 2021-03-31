@@ -32,7 +32,7 @@ class Election:
         with open(self.__json_filename, "w") as f:
             json.dump(self.__votes, f)
 
-    def vote(self, candidates: list[str]):
+    def vote(self, candidates: set[str]):
         """Vote for specified candidates"""
         # Prevent voters from voting for more candidates than is allowed
         if len(candidates) > self.__max_candidates:
@@ -51,4 +51,3 @@ class Election:
 
         # If voting fails
         return False
-
