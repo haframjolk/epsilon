@@ -44,4 +44,6 @@ poetry shell
 ./serve.py
 ```
 
+For production use I recommend setting up a reverse proxy using Apache or nginx and serving requests to Epsilon at <http://127.0.0.1:8080>.
+
 Votes are written to the results file when the election ends. To end the election, simply stop the Epsilon process by pressing <kbd>CTRL</kbd>+<kbd>C</kbd>.

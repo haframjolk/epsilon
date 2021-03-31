@@ -3,4 +3,4 @@
 from waitress import serve
 import app
 
-serve(app=app.app, listen="*:8080")
+serve(app=app.app, listen="127.0.0.1:8080")
