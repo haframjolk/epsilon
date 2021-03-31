@@ -49,10 +49,11 @@ def vote():
     success = False
     # Check password validity
     if password_is_valid(password):
-        # Store candidates as set to prevent duplicate votes
-        candidates = set(data.getlist("candidate"))
-        # Try to vote for the selected candidates
-        success = election.vote(candidates)
+        candidates = data.getlist("candidate")
+        # Only submit vote if there are no duplicates
+        if (len(set(candidates)) == len(candidates)):
+            # Try to vote for the selected candidates
+            success = election.vote(candidates)
 
     if success:
         print("Vote received")
