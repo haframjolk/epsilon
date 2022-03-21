@@ -33,15 +33,13 @@ Elections are configured using a JSON file placed in the repository root called 
 ### Development
 
 ```sh
-poetry shell
-flask run
+poetry run flask run
 ```
 
 ### Production
 
 ```sh
-poetry shell
-./serve.py
+poetry run ./serve.py
 ```
 
 For production use I recommend setting up a reverse proxy using Apache or nginx and serving requests to Epsilon at <http://127.0.0.1:8080>.
