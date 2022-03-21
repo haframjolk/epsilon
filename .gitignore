@@ -139,7 +139,7 @@ cython_debug/
 
 # Program files
 config.json
-votes.json
+results.json
 
 # Machine-specific settings
 .vscode/settings.json
