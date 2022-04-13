@@ -31,7 +31,7 @@
     }
 
     /**
-     * Event handler ran on every checkbox change event, makes sure user doesn't select more candidates than is allowed
+     * Event handler that runs on every checkbox change event, makes sure user doesn't select more candidates than is allowed
      */
     function changeHandler() {
         const checked = countChecked(checkboxGroup);
