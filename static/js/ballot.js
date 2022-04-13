@@ -4,7 +4,7 @@
      * Counts how many checkboxes are checked in a group
      * 
      * @param {HTMLInputElement[]} group Checkbox group to check
-     * @returns Number of checked checkboxes in group
+     * @returns {number} Number of checked checkboxes in group
      */
     function countChecked(group) {
         let cnt = 0;
