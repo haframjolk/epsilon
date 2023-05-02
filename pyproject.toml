@@ -6,7 +6,7 @@ authors = ["Reyn Alpha <reynalpha@outlook.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-Flask = "^1.1.2"
+Flask = "^2.3.2"
 waitress = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
